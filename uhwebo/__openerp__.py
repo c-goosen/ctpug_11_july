@@ -35,7 +35,7 @@ Ecommerce Module
 
 """,
     #'images': ['images/hr_allocation_requests.jpeg', 'images/hr_leave_requests.jpeg', 'images/leaves_analysis.jpeg'],
-    'depends': ['hr', 'calendar', 'resource'],
+    'depends': ['hr', 'product', 'base'],
     'data': [
 
         #'hr_holidays_workflow.xml',
@@ -43,7 +43,7 @@ Ecommerce Module
         
         ],
     #'demo': ['hr_holidays_demo.xml',],
-    'qweb': [
+    #'qweb': [
         'static/src/xml/*.xml',
     ],
     #'test': ['test/test_hr_holiday.yml',
