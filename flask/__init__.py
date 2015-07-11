@@ -10,17 +10,15 @@ app = Flask(__name__)
 
 import xmlrpclib
 
-
-
-username = 'admin' #the user
-pwd = 'admin'      #the password of the user
+username = 'username' #the user
+pwd = 'password'      #the password of the user
 dbname = 'ctpug'    #the database
 
-sock_common = xmlrpclib.ServerProxy ('http://41.223.33.6:8269/xmlrpc/common')
+sock_common = xmlrpclib.ServerProxy ('http://127.0.0.1:8069/xmlrpc/common')
 uid = sock_common.login(dbname, username, pwd)
 
 #replace localhost with the address of the server
-sock = xmlrpclib.ServerProxy('http://41.223.33.6:8269/xmlrpc/object')
+sock = xmlrpclib.ServerProxy('http://127.0.0.1:8069/xmlrpc/object')
 
 
 	
