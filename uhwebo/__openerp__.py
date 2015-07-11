@@ -18,39 +18,36 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-
-
 {
-    'name': 'uhwebo module',
-    'version': '1.5',
-    'author': 'Christo & Gutembert',
-    'category': 'E-commerce',
-    'sequence': 27,
-    'summary': 'Module for Odoo implementation of ezohwebo',
-    #'website': 'https://www.odoo.com/page/employees',
-    'description': """
-Ecommerce Module
-=====================================
-
-
-""",
-    #'images': ['images/hr_allocation_requests.jpeg', 'images/hr_leave_requests.jpeg', 'images/leaves_analysis.jpeg'],
+    'name' : 'ctpug',
+    'version' : '1.1',
+    'sequence' : 2,
     'depends': ['hr', 'product', 'base'],
-    'data': [
+    'author' : 'Christo & Gutembert',
+    'website' : 'www.odoo.zone',
+    'email_1' : 'christo@christogoosen.co.za',
+    'email_2' : 'gutembert@erpweb.co.za',
+    'category':'ecommerce',
+    'Description':"""
+    Custom Module to enable the business rules 
+    """,
+    'demo' : [
+            #'demo/partner.xml'
+            #'demo/contract.xml',
+            #'demo/contractor.xml',
+            #'demo/salary.xml'
+            ],
+    #'test' : [''],
+    'data' : [
+            #'security/security_perm.csv',
+            #'data/give_admin_tech_features.xml'
+            'views/specials_campaign_view.xml',
+            'views/menus.xml',
 
-        #'hr_holidays_workflow.xml',
-        #'hr_holidays_view.xml',
-        
-        ],
-    #'demo': ['hr_holidays_demo.xml',],
-    #'qweb': [
-        'static/src/xml/*.xml',
-    ],
-    #'test': ['test/test_hr_holiday.yml',
-    #        'test/hr_holidays_report.yml',
-    ],
-    'installable': True,
-    'application': True,
+            ],
     'auto_install': False,
+    'installable': True,
+    'application': False,
+
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

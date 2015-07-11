@@ -1,5 +1,3 @@
-import report
-import security
-import tests
-import views
-import specials
+import specials_campaign
+import product
+#import specials

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+		<record id="special_campaign_view_tree" model="ir.ui.view">
+			<field name="name">special.campaign.view.tree</field>
+			<field name="model">product.specials.campaign</field>
+			<field name="arch" type="xml">
+				<tree string="Specials Campaign">
+					<field name="name"/>
+					<field name="date_start"/>
+					<field name="date_end"/>
+					<field name="category"/>
+					<field name="approved"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+		<!--The form view -->
+		<record model="ir.ui.view" id="special_campaign_view_form">
+			<field name="name">special.campaign.view.form</field>
+			<field name="model">product.specials.campaign</field>
+			<field name="arch" type="xml">
+				<form string="Contract Line">
+
+				<!--<notebook>-->
+				
+								<group string="Campaign" cols="4">
+								<field name="name"/>
+								<field name="date_start"/>
+								<field name="date_end"/>
+								<field name="category"/>
+								<field name="approved"/>
+								</group>
+
+				<!--</notebook>-->
+							
+
+						<group string="Products" colspan="4">
+							<field name="products" string="" widget="one2many_list" domain="[()]" context="" nolabel="1"/>
+							<tree string="Product Lines" editable="bottom">
+									<field name="id"/>
+									<field name="name"/>
+									<!--<field name="name"/>
+									<field name="lst_price"/>-->
+	
+							</tree>
+							<!--
+								<field name="contractor_lines" widget="one2many_list" domain="[(is_worker,'=',True)]" context="{'default_contract_id': id, 'random_number_test':3}" >
+									<tree string="Salary Lines">
+										<field name="partner_id" />
+										<field name="invoicing_active"/>
+										<field name="job_title"/>
+										<field name="duration"/>
+										<field name="renewable"/>
+										<field name="type_of_contract"/>
+									</tree>
+								</field>
+
+							-->
+								
+								</group>
+
+					
+							</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="contract_search_view">
+			<field name="name">special.campaign.view.search</field>
+			<field name="model">product.specials.campaign</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<field name="name"/>
+					<field name="date_start"/>
+					<field name="date_end"/>
+					<field name="category"/>
+					<field name="approved"/>
+					
+				</search>
+			</field>
+		</record>
+
+
+
+		<!-- Action -->
+		<record model="ir.actions.act_window" id="product_specials_campaign_view">
+			<field name="name">Specials Campaign</field>
+			<field name="res_model">product.specials.campaign</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,calender</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first Campaign!
+				</p>
+			</field>
+		</record>
+
+
+	</data>
+</openerp>
