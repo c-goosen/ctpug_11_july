@@ -32,13 +32,22 @@ class product_specials_campaign(models.Model):
 	products = fields.One2many('product.product','product_campaign_special_id','Product')
 
 
-	def change_product_price(self):
+	'''def change_product_price(self,cr,uid,ids,context):
 		ids =  context.get('active_id', False)
 
-		campaign_rec = self.browse(ids)
+		campaign_rec = self.browse(cr,uid,ids)
 
 		for product in campaign_rec.products:
-			product.list_price = product.list_price * (campaign_rec.special_price_reduction/100)
+			product.lst_price = product.list_price * (campaign_rec.special_price_reduction/100)
+			vals['id'] = product.id
+			vals['lst_price'] = product.list_price * (campaign_rec.special_price_reduction/100)
+			product.write(cr, uid, vals, context=context)'''
+	@api.one
+	def change_product_price(self):
+		self.products.lst_price = self.products.list_price -  (self.products.list_price* self.special_price_reduction/100)
+
+		#for x in self.products:
+		#	x.lst_price = product.list_price * (campaign_rec.special_price_reduction/100)
 
 	
 

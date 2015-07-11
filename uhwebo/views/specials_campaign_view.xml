@@ -12,6 +12,7 @@
 					<field name="date_end"/>
 					<field name="category"/>
 					<field name="approved"/>
+					<field name="special_price_reduction"/>
 				</tree>
 			</field>
 		</record>
@@ -34,6 +35,7 @@
 								<field name="date_end"/>
 								<field name="category"/>
 								<field name="approved"/>
+								<field name="special_price_reduction"/>
 								</group>
 
 				<!--</notebook>-->
@@ -42,26 +44,8 @@
 						<group string="Products" colspan="4">
 							<field name="products" string="" widget="one2many_list" domain="[()]" context="" nolabel="1"/>
 							<tree string="Product Lines" editable="bottom">
-									<field name="id"/>
-									<field name="name"/>
-									<!--<field name="name"/>
-									<field name="lst_price"/>-->
-	
-							</tree>
-							<!--
-								<field name="contractor_lines" widget="one2many_list" domain="[(is_worker,'=',True)]" context="{'default_contract_id': id, 'random_number_test':3}" >
-									<tree string="Salary Lines">
-										<field name="partner_id" />
-										<field name="invoicing_active"/>
-										<field name="job_title"/>
-										<field name="duration"/>
-										<field name="renewable"/>
-										<field name="type_of_contract"/>
-									</tree>
-								</field>
 
-							-->
-								
+							</tree>
 								</group>
 
 					
