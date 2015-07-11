@@ -43,8 +43,14 @@ class product_specials_campaign(models.Model):
 			vals['lst_price'] = product.list_price * (campaign_rec.special_price_reduction/100)
 			product.write(cr, uid, vals, context=context)'''
 	@api.one
-	def change_product_price(self):
+	def change_product_price_one(self):
 		self.products.lst_price = self.products.list_price -  (self.products.list_price* self.special_price_reduction/100)
+
+	@api.multi
+	def change_product_price(self):
+		for product in self.products:
+			product.lst_price = product.lst_price - (product.lst_price * self.special_price_reduction/100)
+		#self.products.lst_price = self.products.list_price -  (self.products.list_price* self.special_price_reduction/100)
 
 		#for x in self.products:
 		#	x.lst_price = product.list_price * (campaign_rec.special_price_reduction/100)

@@ -27,6 +27,7 @@
 				<form string="Contract Line">
 
 				<!--<notebook>--><button class="oe_highlight" string="Set campaign price reduction" name="change_product_price" type="object"/>
+				<!--<notebook>--><button class="oe_highlight" string="Set campaign price reduction one product" name="change_product_price_one" type="object"/>
 				
 				
 								<group string="Campaign" cols="4">

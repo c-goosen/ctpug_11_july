@@ -16,8 +16,10 @@ class product_product(models.Model):
 	_inherit = 'product.product'
 
 	product_campaign_special_id = fields.Many2one('product.specials.campaign')
-	special 					= fields.Boolean('Special') 
-	ecommerce_product			= fields.Boolean('Sell on website')
+	
+
+	#special 					= fields.Boolean('Special') 
+	#ecommerce_product			= fields.Boolean('Sell on website')
 	
 
 product_product()
