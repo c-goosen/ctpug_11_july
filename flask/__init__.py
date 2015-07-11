@@ -12,15 +12,15 @@ import xmlrpclib
 
 
 
-username = 'username' #the user
-pwd = 'password'      #the password of the user
+username = 'admin' #the user
+pwd = 'admin'      #the password of the user
 dbname = 'ctpug'    #the database
 
-sock_common = xmlrpclib.ServerProxy ('http://127.0.0.1:8069/xmlrpc/common')
+sock_common = xmlrpclib.ServerProxy ('http://41.223.33.6:8269/xmlrpc/common')
 uid = sock_common.login(dbname, username, pwd)
 
 #replace localhost with the address of the server
-sock = xmlrpclib.ServerProxy('http://127.0.0.1:8069/xmlrpc/object')
+sock = xmlrpclib.ServerProxy('http://41.223.33.6:8269/xmlrpc/object')
 
 
 	
@@ -54,6 +54,18 @@ def get_product_templates(username,pwd,dbname, args):
 	data = sock.execute(dbname, uid, pwd, 'product.template', 'read', ids, fields)
 	return data
 
+def get_company_currency(username,pwd,dbname):
+	args = []
+	ids = sock.execute(dbname, uid, pwd, 'res.company', 'search', [('id','=',1)])
+
+	fields = ['currency_id'] #fields to read
+	company = sock.execute(dbname, uid, pwd, 'res.company', 'read', ids, fields)
+	
+	ids = sock.execute(dbname, uid, pwd, 'res.currency', 'search', [('id','=',company[0]['currency_id'][0])])
+	fields = ['symbol']
+	currency_symbol = sock.execute(dbname, uid, pwd, 'res.currency', 'read', ids, fields)
+	return currency_symbol[0]['symbol']
+
 @app.route('/products')
 def products():
 	product_output = 'List of products </br></br>'
@@ -69,7 +81,7 @@ def products():
 			#if x['product_tmpl_id'] == y['id']:
 			#product_output = '\n |' + product_output + str(x['id']) + y['name'] + "<img style='display:block; width:100px;height:100px;' id='base64image' src='data:image/jpeg;base64, %s'/>" % y['image_medium'] +' | \n'
 		if product_template[0]['image_medium']:
-			product_output += '\n' + str(product_product[count]['id']) + product_template[0]['name'] + product_product[count]['list_price']+ "<img style='display:block; width:100px;height:100px;' id='base64image' src='data:image/jpeg;base64, %s'/>" % product_template[0]['image_medium'] +' \n'
+			product_output += '\n' + str(product_product[count]['id']) +' ' + product_template[0]['name'] + ' ' + get_company_currency(username,pwd,dbname) + str(product_product[count]['lst_price']) + "<img style='display:block; width:100px;height:100px;' id='base64image' src='data:image/jpeg;base64, %s'/>" % product_template[0]['image_medium'] +' \n'
 		count += 1
 	return  product_output
 	#return 'List of products %s' % data[0]['id']
