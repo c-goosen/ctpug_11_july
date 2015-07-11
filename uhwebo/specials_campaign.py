@@ -27,7 +27,18 @@ class product_specials_campaign(models.Model):
 
 	approved = fields.Boolean('Approved')
 
+	special_price_reduction = fields.Float("Price reduction in for special")
+
 	products = fields.One2many('product.product','product_campaign_special_id','Product')
+
+
+	def change_product_price(self):
+		ids =  context.get('active_id', False)
+
+		campaign_rec = self.browse(ids)
+
+		for product in campaign_rec.products:
+			product.list_price = product.list_price * (campaign_rec.special_price_reduction/100)
 
 	
 

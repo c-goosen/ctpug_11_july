@@ -69,7 +69,7 @@ def products():
 			#if x['product_tmpl_id'] == y['id']:
 			#product_output = '\n |' + product_output + str(x['id']) + y['name'] + "<img style='display:block; width:100px;height:100px;' id='base64image' src='data:image/jpeg;base64, %s'/>" % y['image_medium'] +' | \n'
 		if product_template[0]['image_medium']:
-			product_output += '\n' + str(product_product[count]['id']) + product_template[0]['name'] + "<img style='display:block; width:100px;height:100px;' id='base64image' src='data:image/jpeg;base64, %s'/>" % product_template[0]['image_medium'] +' \n'
+			product_output += '\n' + str(product_product[count]['id']) + product_template[0]['name'] + product_product[count]['list_price']+ "<img style='display:block; width:100px;height:100px;' id='base64image' src='data:image/jpeg;base64, %s'/>" % product_template[0]['image_medium'] +' \n'
 		count += 1
 	return  product_output
 	#return 'List of products %s' % data[0]['id']

@@ -25,7 +25,8 @@
 			<field name="arch" type="xml">
 				<form string="Contract Line">
 
-				<!--<notebook>-->
+				<!--<notebook>--><button class="oe_highlight" string="Set campaign price reduction" name="change_product_price" type="object"/>
+				
 				
 								<group string="Campaign" cols="4">
 								<field name="name"/>
